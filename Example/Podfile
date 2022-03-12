@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'hangul2kana_Example' do
+  pod 'hangul2kana', :path => '../'
+
+  target 'hangul2kana_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
