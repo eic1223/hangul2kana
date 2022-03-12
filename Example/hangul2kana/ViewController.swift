@@ -7,17 +7,36 @@
 //
 
 import UIKit
+import hangul2kana
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    @IBOutlet weak var hangulTextField: UITextField!
+    @IBOutlet weak var convertedLabel: UILabel!
+    
+    @IBAction func btnHiragana(_ sender: UIButton) {
+        guard let text = hangulTextField.text, text != "" else {
+            convertedLabel.text = "no text"
+            return
+        }
+        
+        let convertedText = Hangul2Kana.toHiragana(word: text)
+        convertedLabel.text = convertedText
+    }
+    
+    @IBAction func btnKatakana(_ sender: UIButton) {
+        guard let text = hangulTextField.text, text != "" else {
+            convertedLabel.text = "no text"
+            return
+        }
+        
+        let convertedText = Hangul2Kana.toKatakana(word: text)
+        convertedLabel.text = convertedText
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 
 }
